@@ -12,7 +12,7 @@ const path = require('path');
 
 app.use(express.json());
 app.use(headers);
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({extended: false}));
 
 app.use('/jobs', controllers.jobscontroller);
 // app.use(express.static(path.join(__dirname, '/public/logos')));
