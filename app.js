@@ -14,14 +14,8 @@ app.use(express.json());
 app.use(headers);
 app.use(express.urlencoded({extended: true}));
 
-app.use(express.static(__dirname)); //here is important thing - no static directory, because all static :)
-
 app.use('/jobs', controllers.jobscontroller);
 // app.use(express.static(path.join(__dirname, '/public/logos')));
-
-app.get("/*", function (req, res) {
-    res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
-})
 
 try {
     dbConnection.authenticate()
