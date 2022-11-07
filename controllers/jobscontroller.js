@@ -71,14 +71,13 @@ const createTransporter = async () => {
 
 router.post('/upload', upload.single('attachment'), async (req, res) => {
 
-    const mailBody = `
-    You've received an employee interest form submission. Please review the attached resume and contact ${req.body.firstName} ${req.body.lastName} at ${req.body.email}.
+    const mailBody = `You've received an employee interest form submission. Please review the attached resume and contact ${req.body.firstName} ${req.body.lastName} at ${req.body.email}.
     `;  
 
     const mailOptions = {
         from: 'zach@dreamgreene.com',
-        to: 'info@dreamgreene.com',
-        bcc: 'development@dreamgreene.com',
+        to: 'maynard.zach23@gmail.com',
+        // bcc: 'development@dreamgreene.com',
         subject: 'Employee Interest Form Submission',
         text: mailBody,
         attachments: [
