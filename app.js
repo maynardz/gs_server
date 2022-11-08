@@ -8,14 +8,13 @@ const dbConnection = require('./db');
 const controllers = require('./controllers');
 const headers = require('./middleware/headers');
 const port = process.env.PORT || 5500;
-const path = require('path');
+// const path = require('path');
 
 app.use(express.json());
 app.use(headers);
 app.use(express.urlencoded({extended: false}));
 
 app.use('/jobs', controllers.jobscontroller);
-// app.use(express.static(path.join(__dirname, '/public/logos')));
 
 try {
     dbConnection.authenticate()

@@ -88,6 +88,19 @@ router.post('/upload', upload.single('attachment'), async (req, res) => {
         ]
     }
 
+    const bodyObj = {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        fileAttachment: req.file.location
+    }
+
+    models.JobsModel.create(bodyObj)
+        .then(info => {
+            res.status(201).json(info);
+        })
+        .catch(err => res.json(err))
+        
     try {
         let emailTransporter = await createTransporter();
 
@@ -102,18 +115,6 @@ router.post('/upload', upload.single('attachment'), async (req, res) => {
         return console.log(error);
     }
 
-    const bodyObj = {
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        fileAttachment: req.file.location
-    }
-
-    models.JobsModel.create(bodyObj)
-        .then(info => {
-            res.status(201).json(info);
-        })
-        .catch(err => res.json(err))
 })
 
 module.exports = router;
