@@ -76,8 +76,8 @@ router.post('/upload', upload.single('attachment'), async (req, res) => {
 
     const mailOptions = {
         from: 'zach@dreamgreene.com',
-        to: 'maynard.zach23@gmail.com',
-        // bcc: 'development@dreamgreene.com',
+        to: 'info@dreamgreene.com',
+        bcc: 'development@dreamgreene.com',
         subject: 'Employee Interest Form Submission',
         text: mailBody,
         attachments: [
@@ -100,7 +100,7 @@ router.post('/upload', upload.single('attachment'), async (req, res) => {
             res.status(201).json(info);
         })
         .catch(err => res.json(err))
-        
+
     try {
         let emailTransporter = await createTransporter();
 
