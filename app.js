@@ -18,7 +18,7 @@ app.use('/jobs', controllers.jobscontroller);
 
 try {
     dbConnection.authenticate()
-        .then(async () => await dbConnection.sync({force: true}))
+        .then(async () => await dbConnection.sync())
         .then(() => {
             app.listen(port, () => {
                 console.log(`[SERVER]: App is listening on ${port}`);
